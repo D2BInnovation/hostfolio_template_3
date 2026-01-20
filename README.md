@@ -1,36 +1,36 @@
-# HostFolio Template 3 - Next.js Glassmorphism
+# HostFolio Template 4 - Next.js Chakra UI
 
-A stunning ultra-modern portfolio built with Next.js 15, featuring glassmorphism effects, dark mode, and advanced animations.
+A professional and accessible portfolio built with Next.js 15 and Chakra UI component library.
 
 ## 🎨 Design Features
 
-- **Glassmorphism Effects**: Frosted glass aesthetic with backdrop blur
-- **Dark Mode**: Seamless theme switching with system preference detection
-- **Parallax Effects**: Depth and motion on scroll
-- **3D Card Interactions**: Interactive hover effects
-- **Gradient Animations**: Dynamic color transitions
-- **Micro-interactions**: Subtle animations on every interaction
+- **Chakra UI Components**: Pre-built accessible components
+- **Theme Switching**: Light/Dark mode with custom themes
+- **Smooth Animations**: Chakra Motion for fluid transitions
+- **Responsive Grid**: Flexible layouts for all devices
+- **Accessibility First**: WCAG compliant components
+- **Clean Typography**: Professional font system
 
 ## 🚀 Tech Stack
 
 - **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Fonts**: Next.js Font Optimization
+- **UI Library**: Chakra UI v3
+- **Styling**: Emotion (CSS-in-JS)
+- **Animations**: Framer Motion (via Chakra)
+- **Icons**: Chakra Icons + Lucide React
 
 ## 📦 Installation
 
 ```bash
 # Create Next.js app
-npx create-next-app@latest hostfolio_template_3 --typescript --tailwind --app
+npx create-next-app@latest hostfolio_template_4 --typescript --app
 
 # Navigate to directory
-cd hostfolio_template_3
+cd hostfolio_template_4
 
-# Install dependencies
-npm install framer-motion clsx tailwind-merge lucide-react
+# Install Chakra UI and dependencies
+npm install @chakra-ui/react @chakra-ui/next-js @emotion/react @emotion/styled framer-motion lucide-react
 
 # Run development server
 npm run dev
@@ -39,165 +39,198 @@ npm run dev
 ## 📁 Project Structure
 
 ```
-hostfolio_template_3/
+hostfolio_template_4/
 ├── app/
-│   ├── layout.tsx          # Root layout with font and metadata
+│   ├── layout.tsx          # Root layout with ChakraProvider
 │   ├── page.tsx            # Home page
-│   └── globals.css         # Global styles
+│   └── providers.tsx       # Chakra providers setup
 ├── components/
-│   ├── Hero.tsx            # Hero section with glassmorphism
-│   ├── About.tsx           # About section with parallax
-│   ├── Experience.tsx      # Timeline with 3D cards
-│   ├── Projects.tsx        # Project grid with hover effects
-│   ├── Contact.tsx         # Contact form with animations
-│   └── Navbar.tsx          # Sticky navigation
-├── lib/
-│   └── utils.ts            # Utility functions
+│   ├── Hero.tsx            # Hero with Chakra components
+│   ├── About.tsx           # About with Card, Badge
+│   ├── Experience.tsx      # Timeline with Stepper
+│   ├── Projects.tsx        # Grid with Image, Text
+│   ├── Contact.tsx         # Form with Input, Button
+│   └── Navbar.tsx          # Responsive navigation
+├── theme/
+│   ├── index.ts            # Custom theme
+│   ├── colors.ts           # Color palette
+│   ├── components.ts       # Component overrides
+│   └── fonts.ts            # Typography settings
 ├── public/
 │   └── data.json           # Portfolio data
-└── tailwind.config.ts      # Tailwind configuration
+└── package.json
 ```
 
 ## 🎨 Customization
 
-### Update Your Data
+### Custom Theme
 
-Edit `public/data.json` with your personal information:
+Create your theme in `theme/index.ts`:
+
+```typescript
+import { extendTheme } from '@chakra-ui/react';
+
+const theme = extendTheme({
+  colors: {
+    brand: {
+      50: '#e6f7ff',
+      100: '#bae7ff',
+      // ... more shades
+      900: '#003a8c',
+    },
+  },
+  fonts: {
+    heading: 'Inter, sans-serif',
+    body: 'Inter, sans-serif',
+  },
+  components: {
+    Button: {
+      // Custom button styles
+    },
+    Card: {
+      // Custom card styles
+    },
+  },
+});
+
+export default theme;
+```
+
+### Update Data
+
+Edit `public/data.json`:
 
 ```json
 {
   "personal": {
     "name": "Your Name",
-    "title": "Your Title",
-    "email": "your.email@example.com"
-    // ... more fields
+    "title": "Your Title"
   }
-  // ... other sections
 }
 ```
 
-### Color Scheme
+## 🌟 Chakra UI Components Used
 
-Update colors in `tailwind.config.ts`:
+### Layout Components
+- `Box`, `Container`, `Stack`, `Grid`, `Flex`
+- `SimpleGrid`, `Center`, `VStack`, `HStack`
 
+### Typography
+- `Heading`, `Text`, `Code`, `Link`
+
+### Forms
+- `FormControl`, `Input`, `Textarea`, `Button`
+- `FormLabel`, `FormErrorMessage`
+
+### Data Display
+- `Card`, `Badge`, `Tag`, `Avatar`
+- `Stat`, `Progress`, `Divider`
+
+### Feedback
+- `Alert`, `Spinner`, `Toast`, `Modal`
+
+### Overlay
+- `Menu`, `Drawer`, `Tooltip`, `Popover`
+
+## 🎯 Theme Features
+
+### Color Modes
 ```typescript
-theme: {
-  extend: {
-    colors: {
-      primary: {...},
-      secondary: {...},
-      accent: {...}
-    }
-  }
-}
+const { colorMode, toggleColorMode } = useColorMode();
+
+// Colors adjust automatically
+bg={useColorModeValue('white', 'gray.800')}
+color={useColorModeValue('gray.800', 'white')}
 ```
 
-### Glassmorphism Settings
-
-Adjust blur and opacity in component styles:
-
-```css
-backdrop-blur-md bg-white/10
-backdrop-blur-lg bg-white/20
-backdrop-blur-xl bg-white/5
+### Responsive Values
+```typescript
+<Box
+  width={{ base: '100%', md: '50%', lg: '33%' }}
+  padding={{ base: 4, md: 6, lg: 8 }}
+/>
 ```
 
-## 🌟 Key Components
-
-### Hero Section
-- Animated gradient background
-- Floating particle effects
-- CTA buttons with hover animations
-
-### About Section
-- Parallax image reveal
-- Skill tags with pulse animations
-- Education timeline
-
-### Experience Section
-- 3D rotating cards
-- Achievement badges
-- Technology stack icons
-
-### Projects Section
-- Masonry grid layout
-- Image zoom on hover
-- Live demo previews
-- GitHub integration
-
-### Contact Section
-- Animated contact form
-- Social media links
-- Email integration
-- Success animations
+### Custom Variants
+```typescript
+<Button
+  variant="solid"
+  colorScheme="brand"
+  size="lg"
+/>
+```
 
 ## 🔧 Environment Variables
 
-Create `.env.local`:
-
 ```env
 NEXT_PUBLIC_SITE_URL=https://yoursite.com
-NEXT_PUBLIC_EMAIL_SERVICE=your-email-service
+NEXT_PUBLIC_FORM_ENDPOINT=your-form-endpoint
 ```
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### Vercel
 
 ```bash
-# Install Vercel CLI
-npm install -g vercel
-
-# Deploy
 vercel
 ```
 
-### Netlify
+### Custom Server
 
 ```bash
-# Build
 npm run build
-
-# Deploy dist folder
-netlify deploy --prod
+npm run start
 ```
 
-## 📱 Responsive Design
+## ⚡ Performance Features
 
-- Mobile: < 768px - Single column, mobile navigation
-- Tablet: 768px - 1024px - Two columns, adapted layouts
-- Desktop: > 1024px - Full multi-column layouts
+- Server-side rendering with Next.js
+- Automatic code splitting
+- Image optimization
+- Font optimization
+- Tree-shaking with Chakra UI
 
-## ⚡ Performance Optimizations
+## 🎨 Animations
 
-- Image optimization with Next.js Image component
-- Lazy loading for below-fold content
-- Code splitting with dynamic imports
-- Reduced motion for accessibility
-- Optimized font loading
+Chakra Motion provides smooth transitions:
 
-## 🎯 Browser Support
+```typescript
+import { motion } from 'framer-motion';
+import { Box } from '@chakra-ui/react';
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+const MotionBox = motion(Box);
 
-## 📄 License
+<MotionBox
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
+  Content
+</MotionBox>
+```
 
-MIT License - feel free to use for personal or commercial projects
+## 📱 Responsive Breakpoints
 
-## 🤝 Contributing
+- `base`: 0em (0px)
+- `sm`: 30em (480px)
+- `md`: 48em (768px)
+- `lg`: 62em (992px)
+- `xl`: 80em (1280px)
+- `2xl`: 96em (1536px)
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a pull request
+## 🌐 Accessibility
 
-## 📧 Support
+- ARIA labels on all interactive elements
+- Keyboard navigation support
+- Focus management
+- Screen reader optimized
+- WCAG 2.1 Level AA compliance
 
-For issues or questions, please open an issue on GitHub.
+## 📚 Resources
+
+- [Chakra UI Docs](https://chakra-ui.com/)
+- [Next.js Docs](https://nextjs.org/docs)
+- [Framer Motion](https://www.framer.com/motion/)
 
 ---
 
