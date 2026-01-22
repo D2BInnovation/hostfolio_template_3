@@ -138,6 +138,7 @@ export default function Hero({ data }: { data: HeroData }) {
               p={4}
               borderRadius="full"
               bg="gray.800"
+              color="#ffffffff"
               _hover={{ bg: 'gray.700', transform: 'scale(1.1)' }}
               transition="all 0.3s"
             >
@@ -151,6 +152,7 @@ export default function Hero({ data }: { data: HeroData }) {
               p={4}
               borderRadius="full"
               bg="gray.800"
+              color="#0077b5"
               _hover={{ bg: 'gray.700', transform: 'scale(1.1)' }}
               transition="all 0.3s"
             >
@@ -162,6 +164,7 @@ export default function Hero({ data }: { data: HeroData }) {
               p={4}
               borderRadius="full"
               bg="gray.800"
+              color="#ea4335"
               _hover={{ bg: 'gray.700', transform: 'scale(1.1)' }}
               transition="all 0.3s"
             >

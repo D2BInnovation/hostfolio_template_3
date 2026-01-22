@@ -46,6 +46,13 @@ const iconMap: Record<string, React.ReactNode> = {
   email: <Mail size={24} />,
 };
 
+const colorMap: Record<string, string> = {
+  linkedin: '#0077b5',
+  github: '#ffffffff',
+  twitter: '#1da1f2',
+  email: '#ea4335',
+};
+
 export default function Contact({ data }: { data: ContactData }) {
   const [formData, setFormData] = useState({
     name: '',
@@ -145,7 +152,7 @@ export default function Contact({ data }: { data: ContactData }) {
                     p={4}
                     bg="gray.800"
                     borderRadius="full"
-                    color="brand.400"
+                    color={colorMap[link.icon] || "brand.400"}
                     _hover={{ bg: 'gray.700', transform: 'scale(1.1)', transition: 'all 0.3s' }}
                     aria-label={link.platform}
                   >

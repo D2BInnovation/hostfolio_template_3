@@ -87,9 +87,17 @@ export default function Navbar({ data }: NavbarProps) {
               variant="ghost"
               size="sm"
             />
-            <Button size="sm" colorScheme="brand">
-              Resume
-            </Button>
+            {data?.personal?.resume && (
+              <Button
+                as="a"
+                href={data.personal.resume}
+                target="_blank"
+                size="sm"
+                colorScheme="brand"
+              >
+                Resume
+              </Button>
+            )}
           </Flex>
 
           {/* Mobile Menu */}
@@ -131,9 +139,18 @@ export default function Navbar({ data }: NavbarProps) {
                   {item.label}
                 </Link>
               ))}
-              <Button width="full" colorScheme="brand" mt={4}>
-                Resume
-              </Button>
+              {data?.personal?.resume && (
+                <Button
+                  as="a"
+                  href={data.personal.resume}
+                  target="_blank"
+                  width="full"
+                  colorScheme="brand"
+                  mt={4}
+                >
+                  Resume
+                </Button>
+              )}
             </Stack>
           </DrawerBody>
         </DrawerContent>
