@@ -8,6 +8,7 @@ import About from '@/components/About';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
+import portfolioData from '../data.json';
 
 interface PortfolioData {
   personal: {
@@ -68,19 +69,14 @@ export default function Home() {
   const { colorMode } = useColorMode();
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch('/api/data');
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.error('Failed to load portfolio data:', error);
-      } finally {
-        setLoading(false);
-      }
+    // Use imported data directly for static export compatibility
+    try {
+      setData(portfolioData);
+    } catch (error) {
+      console.error('Failed to load portfolio data:', error);
+    } finally {
+      setLoading(false);
     }
-
-    fetchData();
   }, []);
 
   if (loading) {
