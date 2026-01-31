@@ -8,10 +8,10 @@ import './globals.css'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'John Doe | Full Stack Developer',
-  description: 'Full-stack developer with 5+ years of experience building scalable web applications. View my work and get in touch.',
+  title: 'My Portfolio',
+  description: 'My Portfolio',
   generator: 'HostFolio',
-  icons: {
+  icons: {  
     icon: [
       {
         url: '/favicon-32x32.png',
