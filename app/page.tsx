@@ -101,11 +101,11 @@ export default function Home() {
   return (
     <Box as="main" bg={colorMode === 'dark' ? 'gray.900' : 'gray.50'} color={colorMode === 'dark' ? 'gray.50' : 'gray.900'}>
       <Navbar data={data} />
-      <Hero data={data} />
-      <About data={data} />
+      {data.hero && <Hero data={data} />}
+      {data.about && <About data={data} />}
       {data.experience && data.experience.length > 0 && <Experience data={data} />}
       {data.projects && data.projects.length > 0 && <Projects data={data} />}
-      <Contact data={data} />
+      {data.contact && <Contact data={data} />}
 
       {/* Footer */}
       <Box as="footer" borderTopWidth={1} borderTopColor={colorMode === 'dark' ? 'gray.700' : 'gray.200'} bg={colorMode === 'dark' ? 'gray.800/50' : 'gray.100/50'} py={12}>
