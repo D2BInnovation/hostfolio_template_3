@@ -21,6 +21,7 @@ interface PortfolioData {
     linkedin: string;
     github: string;
     bio: string;
+    resume?: string;
   };
   hero: {
     greeting: string;
@@ -61,6 +62,7 @@ interface PortfolioData {
       icon: string;
     }>;
   };
+  resume?: string;
 }
 
 export default function Home() {
