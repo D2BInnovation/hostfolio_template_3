@@ -36,10 +36,16 @@ export default function Navbar({ data }: NavbarProps) {
 
   const navItems = [
     { label: 'About', href: '#about' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
   ];
+  if (data?.experience && data?.experience?.length > 0) {
+    navItems.push({ label: 'Experience', href: '#experience' });
+  }
+  if (data?.projects && data?.projects?.length > 0) {
+    navItems.push({ label: 'Projects', href: '#projects' });
+  }
+  if (data?.contact) {
+    navItems.push({ label: 'Contact', href: '#contact' });
+  }
 
   return (
     <Box
